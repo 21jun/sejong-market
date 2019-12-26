@@ -33,12 +33,13 @@ class Item:
 
     def save_item(self):
         SQL = """INSERT INTO item VALUES(NULL, {author_id}, '{title}', {price}, '{image}', '{description}','{trade_type}', '{category}', '{pub_date}');"""
+        # print(SQL.format(author_id=self.author_id, title=self.title, price=int(self.price), image=self.image, description=self.description, trade_type=self.trade_type, category=self.category, pub_date=self.pub_date))
         self.db.cur.execute(SQL.format(author_id=self.author_id, title=self.title, price=int(self.price), image=self.image, description=self.description, trade_type=self.trade_type, category=self.category, pub_date=self.pub_date))
 
         self.db.conn.commit()
         
     def assgin_trade(self, item_info):
-        print(item_info)
+        # print(item_info)
         self.load_item(item_info)
         self.save_item()
 

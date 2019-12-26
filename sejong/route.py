@@ -56,22 +56,20 @@ def get_items():
     if request.method == 'POST':
         data = request
 
-        # item_info = {
-        #     'author_id' : data.args.get('author_id'),
-        #     'title' : data.args.get('title'),
-        #     'price' : data.args.get('price'),
-        #     'image' : data.args.get('image'),
-        #     'description' : data.args.get('description'),
-        #     'trade_type' : data.args.get('trade_type'),
-        #     'category' : data.args.get('category'),
-        #     'pub_date' : data.args.get('pub_date'),
-        # }
+        item_info = {
+            'author_id' : data.form["author_id"],
+            'title' : data.form["title"],
+            'price' : data.form["price"],
+            'image' : data.form["image"],
+            'description' : data.form["description"],
+            'trade_type' : data.form["trade_type"],
+            'category' : data.form["category"],
+            'pub_date' : data.form["pub_date"],
+        }
 
-        item_info = data.form("photo")
-
-        print(item_info)
-        # item = items.Item()
-        # item.assgin_trade(item_info)
+        # print(item_info)
+        item = items.Item()
+        item.assgin_trade(item_info)
         response['data'] = item_info
         response['success'] = True
         return Response(json.dumps(response, indent=4, default=myconverter), mimetype='application/json')
@@ -81,6 +79,6 @@ def get_items():
         
         item = items.Item()
         response['data'] = item.show_trade()
-        print(response['data'])
+        # print(response['data'])
         response['success'] = True
         return Response(json.dumps(response, indent=4, default=myconverter), mimetype='application/json')
