@@ -17,8 +17,7 @@ def main():
     return "hello world 2"
 
 @app.route("/book/isbn", methods=['GET'])
-def get_book_info(isbn):
-
+def get_book_info():
     response = {
         'success': True,
         'data' : {},
