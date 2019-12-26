@@ -32,7 +32,7 @@ class Item:
         self.pub_date = item_info['pub_date']
 
     def save_item(self):
-        SQL = """INSERT INTO item VALUES(NULL, {author_id}, {title}, {price}, '{image}', '{description}','{trade_type}', '{category}', '{pub_date}');"""
+        SQL = """INSERT INTO item VALUES(NULL, {author_id}, '{title}', {price}, '{image}', '{description}','{trade_type}', '{category}', '{pub_date}');"""
         self.db.cur.execute(SQL.format(author_id=self.author_id, title=self.title, price=int(self.price), image=self.image, description=self.description, trade_type=self.trade_type, category=self.category, pub_date=self.pub_date))
 
         self.db.conn.commit()
