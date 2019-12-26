@@ -65,6 +65,7 @@ def get_items():
             'trade_type' : data.form["trade_type"],
             'category' : data.form["category"],
             'pub_date' : data.form["pub_date"],
+            'name': data.form["name"]
         }
 
         # print(item_info)

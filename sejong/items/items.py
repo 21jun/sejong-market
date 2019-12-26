@@ -20,6 +20,7 @@ class Item:
         self.trade_type = None
         self.category = None
         self.pub_date = None
+        self.name = None
 
     def load_item(self, item_info):
         self.author_id = item_info['author_id']
@@ -30,11 +31,12 @@ class Item:
         self.trade_type = item_info['trade_type']
         self.category = item_info['category']
         self.pub_date = item_info['pub_date']
+        self.name = item_info['name']
 
     def save_item(self):
-        SQL = """INSERT INTO item VALUES(NULL, {author_id}, '{title}', {price}, '{image}', '{description}','{trade_type}', '{category}', '{pub_date}');"""
+        SQL = """INSERT INTO item VALUES(NULL, {author_id}, '{title}', {price}, '{image}', '{description}','{trade_type}', '{category}', '{pub_date}', '{name}');"""
         # print(SQL.format(author_id=self.author_id, title=self.title, price=int(self.price), image=self.image, description=self.description, trade_type=self.trade_type, category=self.category, pub_date=self.pub_date))
-        self.db.cur.execute(SQL.format(author_id=self.author_id, title=self.title, price=int(self.price), image=self.image, description=self.description, trade_type=self.trade_type, category=self.category, pub_date=self.pub_date))
+        self.db.cur.execute(SQL.format(author_id=self.author_id, title=self.title, price=int(self.price), image=self.image, description=self.description, trade_type=self.trade_type, category=self.category, pub_date=self.pub_date, name =self.name))
 
         self.db.conn.commit()
         
