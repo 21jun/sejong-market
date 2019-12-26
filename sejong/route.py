@@ -58,6 +58,7 @@ def get_items():
 
         item_info = {
             'author_id' : data.args.get('author_id'),
+            'title' : data.args.get('title'),
             'price' : data.args.get('price'),
             'image' : data.args.get('image'),
             'description' : data.args.get('description'),
