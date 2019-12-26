@@ -6,4 +6,4 @@ app.config.from_object('config.BasicConfig')
 
 # print(app.config)
 
-from monthly import route
+from sejong import route

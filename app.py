@@ -1,4 +1,4 @@
-from monthly import app
+from sejong import app
 
 if __name__ == "__main__":
     app.run(debug=False)
