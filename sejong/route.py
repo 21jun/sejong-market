@@ -50,7 +50,16 @@ def get_items():
 
     if request.method == 'POST':
         data = request
-        item_info = json.loads(data.get_data())
+
+        item_info = {
+            'author_id' : data.args.get('author_id'),
+            'price' : data.args.get('price'),
+            'image' : data.args.get('image '),
+            'description' : data.args.get('description '),
+            'trade_type' : data.args.get('trade_type'),
+            'category' : data.args.get('category'),
+            'pub_date' : data.args.get('pub_date'),
+        }
         print(item_info)
         item = items.Item()
         item.assgin_trade(item_info)
