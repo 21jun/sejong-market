@@ -1,6 +1,7 @@
 
 from pathlib import Path
 from flask import request, Response
+from sejong.items import items
 from sejong import app
 import requests
 import json
@@ -39,3 +40,24 @@ def get_book_info():
         response['data'] = item
         response['success'] = True
         return Response(json.dumps(response, indent=4, default=myconverter), mimetype='application/json')
+
+@app.route("/items", methods=['POST', 'GET'])
+def get_items():
+    response = {
+            'success': True,
+            'data' : {},
+    }
+
+    if request.method == 'POST':
+        data = request
+        item_info = json.loads(data.get_data())
+        print(item_info)
+        item = items.Item()
+        item.assgin_trade(item_info)
+        response['data'] = item_info
+        response['success'] = True
+        return Response(json.dumps(response, indent=4, default=myconverter), mimetype='application/json')
+
+
+    if request.method == 'GET':
+        pass
