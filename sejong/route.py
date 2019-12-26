@@ -56,19 +56,22 @@ def get_items():
     if request.method == 'POST':
         data = request
 
-        item_info = {
-            'author_id' : data.args.get('author_id'),
-            'title' : data.args.get('title'),
-            'price' : data.args.get('price'),
-            'image' : data.args.get('image'),
-            'description' : data.args.get('description'),
-            'trade_type' : data.args.get('trade_type'),
-            'category' : data.args.get('category'),
-            'pub_date' : data.args.get('pub_date'),
-        }
+        # item_info = {
+        #     'author_id' : data.args.get('author_id'),
+        #     'title' : data.args.get('title'),
+        #     'price' : data.args.get('price'),
+        #     'image' : data.args.get('image'),
+        #     'description' : data.args.get('description'),
+        #     'trade_type' : data.args.get('trade_type'),
+        #     'category' : data.args.get('category'),
+        #     'pub_date' : data.args.get('pub_date'),
+        # }
+
+        item_info = data.form("photo")
+
         print(item_info)
-        item = items.Item()
-        item.assgin_trade(item_info)
+        # item = items.Item()
+        # item.assgin_trade(item_info)
         response['data'] = item_info
         response['success'] = True
         return Response(json.dumps(response, indent=4, default=myconverter), mimetype='application/json')
