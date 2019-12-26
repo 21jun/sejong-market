@@ -82,3 +82,19 @@ def get_items():
         # print(response['data'])
         response['success'] = True
         return Response(json.dumps(response, indent=4, default=myconverter), mimetype='application/json')
+
+
+@app.route("/items/<item_num>", methods=['GET'])
+def get_items_single(item_num):
+    response = {
+            'success': True,
+            'data' : {},
+    }
+
+    if request.method == 'GET':
+        data = request
+
+        item = items.Item()
+        response['data'] = item.get_single_item(item_num)
+        response['success'] = True
+        return Response(json.dumps(response, indent=4, default=myconverter), mimetype='application/json')

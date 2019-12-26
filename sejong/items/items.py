@@ -49,3 +49,10 @@ class Item:
         data = self.db.cur.fetchall()
         
         return data
+
+    def get_single_item(self, item_num):
+        SQL= "SELECT * FROM item where id='{item_num}'"
+        self.db.cur.execute(SQL.format(item_num=item_num))
+        data = self.db.cur.fetchall()
+
+        return data
