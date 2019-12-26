@@ -1,6 +1,7 @@
 
 from pathlib import Path
 from flask import request, Response
+from sejong import app
 import json
 import datetime
 
