@@ -6,6 +6,12 @@ from sejong import app
 import requests
 import json
 import datetime
+from flask_cors import CORS
+
+cors = CORS(app, resources={
+  r"/db/*": {"origin": "*"},
+  r"/api/*": {"origin": "*"},
+})
 
 def myconverter(o):
     if isinstance(o, datetime.date):
