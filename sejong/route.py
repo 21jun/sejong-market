@@ -30,7 +30,6 @@ def get_book_info():
         'data' : {},
     }
 
-
     if request.method == 'GET':
         data = request
         isbn = data.args.get('isbn')
@@ -75,4 +74,9 @@ def get_items():
 
 
     if request.method == 'GET':
-        pass
+        
+        item = items.Item()
+        response['data'] = item.show_trade()
+        print(response['data'])
+        response['success'] = True
+        return Response(json.dumps(response, indent=4, default=myconverter), mimetype='application/json')

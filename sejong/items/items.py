@@ -39,3 +39,10 @@ class Item:
         print(item_info)
         self.load_item(item_info)
         self.save_item()
+
+    def show_trade(self):
+        SQL = """SELECT * FROM item;"""
+        self.db.cur.execute(SQL)
+        data = self.db.cur.fetchall()
+        
+        return data
